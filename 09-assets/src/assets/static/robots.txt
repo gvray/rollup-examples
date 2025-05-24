@@ -1,0 +1,5 @@
+# robots.txt for Rollup Assets Example
+User-agent: *
+Allow: /
+
+Sitemap: https://example.com/sitemap.xml

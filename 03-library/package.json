@@ -1,0 +1,31 @@
+{
+  "name": "03-library",
+  "version": "1.0.0",
+  "description": "库打包示例，展示如何打包JavaScript库，支持多种模块格式(UMD/ESM/CJS)",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "keywords": [
+    "rollup",
+    "library",
+    "umd",
+    "esm",
+    "cjs"
+  ],
+  "author": "Gavin Ray",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^3.29.4"
+  }
+}

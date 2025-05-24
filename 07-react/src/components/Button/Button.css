@@ -1,0 +1,171 @@
+/* 按钮基础样式 */
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  text-decoration: none;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 6px 16px;
+  border-radius: 4px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+              box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+              border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+              color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+/* 尺寸变体 */
+.ui-button-small {
+  padding: 4px 10px;
+  font-size: 0.8125rem;
+}
+
+.ui-button-medium {
+  padding: 6px 16px;
+  font-size: 0.875rem;
+}
+
+.ui-button-large {
+  padding: 8px 22px;
+  font-size: 0.9375rem;
+}
+
+/* Contained 变体 */
+.ui-button-contained {
+  color: #fff;
+  background-color: #3f51b5;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),
+              0px 2px 2px 0px rgba(0,0,0,0.14),
+              0px 1px 5px 0px rgba(0,0,0,0.12);
+}
+
+.ui-button-contained:hover {
+  background-color: #303f9f;
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),
+              0px 4px 5px 0px rgba(0,0,0,0.14),
+              0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+/* Outlined 变体 */
+.ui-button-outlined {
+  color: #3f51b5;
+  border: 1px solid rgba(63, 81, 181, 0.5);
+  background-color: transparent;
+}
+
+.ui-button-outlined:hover {
+  background-color: rgba(63, 81, 181, 0.04);
+  border: 1px solid #3f51b5;
+}
+
+/* Text 变体 */
+.ui-button-text {
+  color: #3f51b5;
+  background-color: transparent;
+  padding: 6px 8px;
+}
+
+.ui-button-text:hover {
+  background-color: rgba(63, 81, 181, 0.04);
+}
+
+/* 颜色变体 - Contained */
+.ui-button-contained.ui-button-primary { background-color: #3f51b5; }
+.ui-button-contained.ui-button-primary:hover { background-color: #303f9f; }
+
+.ui-button-contained.ui-button-secondary { background-color: #f50057; }
+.ui-button-contained.ui-button-secondary:hover { background-color: #c51162; }
+
+.ui-button-contained.ui-button-success { background-color: #4caf50; }
+.ui-button-contained.ui-button-success:hover { background-color: #388e3c; }
+
+.ui-button-contained.ui-button-danger { background-color: #f44336; }
+.ui-button-contained.ui-button-danger:hover { background-color: #d32f2f; }
+
+.ui-button-contained.ui-button-warning { background-color: #ff9800; }
+.ui-button-contained.ui-button-warning:hover { background-color: #f57c00; }
+
+.ui-button-contained.ui-button-info { background-color: #2196f3; }
+.ui-button-contained.ui-button-info:hover { background-color: #1976d2; }
+
+/* 颜色变体 - Outlined & Text */
+.ui-button-outlined.ui-button-primary, .ui-button-text.ui-button-primary { color: #3f51b5; }
+.ui-button-outlined.ui-button-secondary, .ui-button-text.ui-button-secondary { color: #f50057; }
+.ui-button-outlined.ui-button-success, .ui-button-text.ui-button-success { color: #4caf50; }
+.ui-button-outlined.ui-button-danger, .ui-button-text.ui-button-danger { color: #f44336; }
+.ui-button-outlined.ui-button-warning, .ui-button-text.ui-button-warning { color: #ff9800; }
+.ui-button-outlined.ui-button-info, .ui-button-text.ui-button-info { color: #2196f3; }
+
+/* 边框颜色 - Outlined */
+.ui-button-outlined.ui-button-primary { border-color: rgba(63, 81, 181, 0.5); }
+.ui-button-outlined.ui-button-primary:hover { border-color: #3f51b5; }
+
+.ui-button-outlined.ui-button-secondary { border-color: rgba(245, 0, 87, 0.5); }
+.ui-button-outlined.ui-button-secondary:hover { border-color: #f50057; }
+
+.ui-button-outlined.ui-button-success { border-color: rgba(76, 175, 80, 0.5); }
+.ui-button-outlined.ui-button-success:hover { border-color: #4caf50; }
+
+.ui-button-outlined.ui-button-danger { border-color: rgba(244, 67, 54, 0.5); }
+.ui-button-outlined.ui-button-danger:hover { border-color: #f44336; }
+
+.ui-button-outlined.ui-button-warning { border-color: rgba(255, 152, 0, 0.5); }
+.ui-button-outlined.ui-button-warning:hover { border-color: #ff9800; }
+
+.ui-button-outlined.ui-button-info { border-color: rgba(33, 150, 243, 0.5); }
+.ui-button-outlined.ui-button-info:hover { border-color: #2196f3; }
+
+/* 禁用状态 */
+.ui-button-disabled {
+  color: rgba(0, 0, 0, 0.26) !important;
+  box-shadow: none;
+  cursor: default;
+  pointer-events: none;
+}
+
+.ui-button-contained.ui-button-disabled {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.ui-button-outlined.ui-button-disabled {
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+
+/* 加载状态 */
+.ui-button-loading {
+  cursor: progress;
+}
+
+.ui-button-spinner {
+  position: absolute;
+  left: 50%;
+  margin-left: -12px;
+  width: 24px;
+  height: 24px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: button-spin 0.8s linear infinite;
+}
+
+.ui-button-text-with-loader {
+  visibility: hidden;
+}
+
+@keyframes button-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

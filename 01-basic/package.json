@@ -1,0 +1,19 @@
+{
+  "name": "01-basic",
+  "version": "1.0.0",
+  "description": "基础的JavaScript打包示例，展示Rollup的核心功能",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "keywords": [
+    "rollup",
+    "basic"
+  ],
+  "author": "Gavin Ray",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^3.29.4"
+  }
+}

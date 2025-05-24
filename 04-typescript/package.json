@@ -1,0 +1,27 @@
+{
+  "name": "04-typescript",
+  "version": "1.0.0",
+  "description": "TypeScript支持示例，展示如何在Rollup中集成TypeScript",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "rollup",
+    "typescript"
+  ],
+  "author": "Gavin Ray",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "rollup": "^3.29.4",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
+  }
+}

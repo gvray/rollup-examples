@@ -1,0 +1,115 @@
+/* 提示框基础样式 */
+.ui-tooltip {
+  position: fixed;
+  z-index: 1500;
+  background-color: rgba(97, 97, 97, 0.92);
+  color: #fff;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.03333em;
+  max-width: 300px;
+  word-wrap: break-word;
+  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),
+              0px 6px 10px 0px rgba(0,0,0,0.14),
+              0px 1px 18px 0px rgba(0,0,0,0.12);
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+              transform 133ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+/* 打开状态 */
+.ui-tooltip-open {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 箭头样式 - 通过伪元素实现 */
+.ui-tooltip::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: inherit;
+  transform: rotate(45deg);
+}
+
+/* 顶部位置 */
+.ui-tooltip-top::before,
+.ui-tooltip-top-start::before,
+.ui-tooltip-top-end::before {
+  bottom: -4px;
+}
+
+.ui-tooltip-top::before {
+  left: calc(50% - 4px);
+}
+
+.ui-tooltip-top-start::before {
+  left: 12px;
+}
+
+.ui-tooltip-top-end::before {
+  right: 12px;
+}
+
+/* 底部位置 */
+.ui-tooltip-bottom::before,
+.ui-tooltip-bottom-start::before,
+.ui-tooltip-bottom-end::before {
+  top: -4px;
+}
+
+.ui-tooltip-bottom::before {
+  left: calc(50% - 4px);
+}
+
+.ui-tooltip-bottom-start::before {
+  left: 12px;
+}
+
+.ui-tooltip-bottom-end::before {
+  right: 12px;
+}
+
+/* 左侧位置 */
+.ui-tooltip-left::before,
+.ui-tooltip-left-start::before,
+.ui-tooltip-left-end::before {
+  right: -4px;
+}
+
+.ui-tooltip-left::before {
+  top: calc(50% - 4px);
+}
+
+.ui-tooltip-left-start::before {
+  top: 12px;
+}
+
+.ui-tooltip-left-end::before {
+  bottom: 12px;
+}
+
+/* 右侧位置 */
+.ui-tooltip-right::before,
+.ui-tooltip-right-start::before,
+.ui-tooltip-right-end::before {
+  left: -4px;
+}
+
+.ui-tooltip-right::before {
+  top: calc(50% - 4px);
+}
+
+.ui-tooltip-right-start::before {
+  top: 12px;
+}
+
+.ui-tooltip-right-end::before {
+  bottom: 12px;
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollup 打包可视化示例</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .chart-container {
+      height: 400px;
+      margin: 20px 0;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      text-decoration: none;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .btn-secondary {
+      background-color: #2196F3;
+    }
+    .btn-secondary:hover {
+      background-color: #0b7dda;
+    }
+    .btn-warning {
+      background-color: #ff9800;
+    }
+    .btn-warning:hover {
+      background-color: #e68a00;
+    }
+    .info {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .module-list {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+    }
+    .module-item {
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+    }
+    .module-item:last-child {
+      border-bottom: none;
+    }
+    .size-bar {
+      height: 20px;
+      background-color: #4CAF50;
+      margin-top: 5px;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rollup 打包可视化示例</h1>
+  
+  <div class="info">
+    <p>这个示例展示了如何使用各种工具可视化和分析 Rollup 打包结果。点击下面的按钮查看不同的可视化报告。</p>
+    <div>
+      <a href="../stats.html" class="btn" target="_blank">查看打包可视化报告</a>
+      <a href="../dependency-report.json" class="btn btn-secondary" target="_blank">查看依赖关系报告</a>
+      <button id="loadChartBtn" class="btn btn-warning">加载模块大小图表</button>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="card">
+      <h2>应用演示</h2>
+      <p>这个应用导入了几个常用库（lodash、date-fns、chart.js）来演示打包分析。</p>
+      <div>
+        <h3>当前时间格式化</h3>
+        <p id="formatted-date">加载中...</p>
+        
+        <h3>数组操作</h3>
+        <p>原始数组: <span id="original-array"></span></p>
+        <p>处理后: <span id="processed-array"></span></p>
+        
+        <h3>模块大小分析</h3>
+        <div class="chart-container">
+          <canvas id="moduleSizeChart"></canvas>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>打包分析工具</h2>
+      <p>本示例使用了以下工具进行打包分析：</p>
+      <ul>
+        <li><strong>rollup-plugin-visualizer</strong>: 生成交互式可视化报告，展示模块大小和依赖关系</li>
+        <li><strong>source-map-explorer</strong>: 使用源映射分析打包文件的组成</li>
+        <li><strong>自定义依赖报告</strong>: 通过自定义 Rollup 插件生成依赖关系报告</li>
+      </ul>
+      <p>要运行这些工具，请使用以下命令：</p>
+      <pre>npm run visualize  # 生成可视化报告
+npm run analyze   # 运行 source-map-explorer</pre>
+    </div>
+    
+    <div class="card">
+      <h2>模块列表</h2>
+      <p>点击"加载模块大小图表"按钮查看项目中使用的主要模块及其大小。</p>
+      <div id="moduleList" class="module-list">
+        <p>点击上方按钮加载模块信息...</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="bundle.js"></script>
+</body>
+</html>

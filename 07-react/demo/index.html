@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React组件库示例</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+    h2 {
+      color: #555;
+      margin-top: 30px;
+    }
+    .component-section {
+      margin-bottom: 40px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+    .code-block {
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 16px;
+      margin-top: 16px;
+      overflow: auto;
+    }
+    pre {
+      margin: 0;
+    }
+    code {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>React组件库示例</h1>
+    <p>这是一个使用Rollup打包的React组件库示例，展示了各种组件的使用方法。</p>
+    
+    <div id="root"></div>
+  </div>
+
+  <!-- 加载React和ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  
+  <!-- 加载组件库 -->
+  <script src="../dist/umd/index.js"></script>
+  
+  <!-- 示例代码 -->
+  <script>
+    const { 
+      Button, Card, Input, Modal, Tooltip, ThemeProvider 
+    } = UILibrary;
+    
+    // 创建一个示例应用
+    const App = () => {
+      const [modalOpen, setModalOpen] = React.useState(false);
+      const [inputValue, setInputValue] = React.useState('');
+      
+      return React.createElement(ThemeProvider, null, 
+        React.createElement('div', null, [
+          // 按钮示例
+          React.createElement('div', { className: 'component-section', key: 'buttons' }, [
+            React.createElement('h2', { key: 'title' }, '按钮组件'),
+            React.createElement('div', { className: 'demo-row', key: 'variants' }, [
+              React.createElement(Button, { key: 'contained', variant: 'contained' }, '默认按钮'),
+              React.createElement(Button, { key: 'outlined', variant: 'outlined' }, '描边按钮'),
+              React.createElement(Button, { key: 'text', variant: 'text' }, '文本按钮')
+            ]),
+            React.createElement('div', { className: 'demo-row', key: 'colors' }, [
+              React.createElement(Button, { key: 'primary', variant: 'contained', color: 'primary' }, '主色按钮'),
+              React.createElement(Button, { key: 'secondary', variant: 'contained', color: 'secondary' }, '次色按钮'),
+              React.createElement(Button, { key: 'success', variant: 'contained', color: 'success' }, '成功按钮'),
+              React.createElement(Button, { key: 'warning', variant: 'contained', color: 'warning' }, '警告按钮'),
+              React.createElement(Button, { key: 'error', variant: 'contained', color: 'error' }, '错误按钮')
+            ]),
+            React.createElement('div', { className: 'demo-row', key: 'sizes' }, [
+              React.createElement(Button, { key: 'small', variant: 'contained', size: 'small' }, '小按钮'),
+              React.createElement(Button, { key: 'medium', variant: 'contained', size: 'medium' }, '中按钮'),
+              React.createElement(Button, { key: 'large', variant: 'contained', size: 'large' }, '大按钮')
+            ]),
+            React.createElement('div', { className: 'demo-row', key: 'states' }, [
+              React.createElement(Button, { key: 'disabled', variant: 'contained', disabled: true }, '禁用按钮'),
+              React.createElement(Button, { key: 'loading', variant: 'contained', loading: true }, '加载中')
+            ])
+          ]),
+          
+          // 卡片示例
+          React.createElement('div', { className: 'component-section', key: 'cards' }, [
+            React.createElement('h2', { key: 'title' }, '卡片组件'),
+            React.createElement('div', { className: 'demo-row', key: 'basic' }, [
+              React.createElement(Card, { 
+                key: 'basic', 
+                title: '基础卡片', 
+                subtitle: '这是一个基础卡片示例',
+                width: '300px'
+              }, '卡片内容区域，可以放置任何内容。')
+            ]),
+            React.createElement('div', { className: 'demo-row', key: 'elevation' }, [
+              React.createElement(Card, { 
+                key: 'elevation0', 
+                title: '无阴影', 
+                elevation: 0,
+                width: '200px'
+              }, '无阴影卡片'),
+              React.createElement(Card, { 
+                key: 'elevation1', 
+                title: '阴影级别1', 
+                elevation: 1,
+                width: '200px'
+              }, '默认阴影'),
+              React.createElement(Card, { 
+                key: 'elevation2', 
+                title: '阴影级别2', 
+                elevation: 2,
+                width: '200px'
+              }, '中等阴影'),
+              React.createElement(Card, { 
+                key: 'elevation3', 
+                title: '阴影级别3', 
+                elevation: 3,
+                width: '200px'
+              }, '深阴影')
+            ]),
+            React.createElement('div', { className: 'demo-row', key: 'actions' }, [
+              React.createElement(Card, { 
+                key: 'actions', 
+                title: '带操作的卡片', 
+                subtitle: '包含底部操作区',
+                width: '300px',
+                actions: React.createElement('div', null, [
+                  React.createElement(Button, { key: 'cancel', variant: 'text', size: 'small' }, '取消'),
+                  React.createElement(Button, { key: 'confirm', variant: 'contained', size: 'small' }, '确认')
+                ])
+              }, '这张卡片包含底部操作区域，可以放置按钮等操作元素。')
+            ])
+          ]),
+          
+          // 输入框示例
+          React.createElement('div', { className: 'component-section', key: 'inputs' }, [
+            React.createElement('h2', { key: 'title' }, '输入框组件'),
+            React.createElement('div', { className: 'demo-row', key: 'variants' }, [
+              React.createElement(Input, { 
+                key: 'outlined', 
+                label: '描边输入框', 
+                variant: 'outlined',
+                placeholder: '请输入内容',
+                style: { width: '200px' }
+              }),
+              React.createElement(Input, { 
+                key: 'filled', 
+                label: '填充输入框', 
+                variant: 'filled',
+                placeholder: '请输入内容',
+                style: { width: '200px' }
+              }),
+              React.createElement(Input, { 
+                key: 'standard', 
+                label: '标准输入框', 
+                variant: 'standard',
+                placeholder: '请输入内容',
+                style: { width: '200px' }
+              })
+            ]),
+            React.createElement('div', { className: 'demo-row', key: 'states' }, [
+              React.createElement(Input, { 
+                key: 'required', 
+                label: '必填输入框', 
+                required: true,
+                placeholder: '请输入内容',
+                style: { width: '200px' }
+              }),
+              React.createElement(Input, { 
+                key: 'disabled', 
+                label: '禁用输入框', 
+                disabled: true,
+                placeholder: '禁用状态',
+                style: { width: '200px' }
+              }),
+              React.createElement(Input, { 
+                key: 'error', 
+                label: '错误输入框', 
+                error: true,
+                helperText: '输入内容有误',
+                placeholder: '请输入内容',
+                style: { width: '200px' }
+              })
+            ]),
+            React.createElement('div', { className: 'demo-row', key: 'controlled' }, [
+              React.createElement(Input, { 
+                key: 'controlled', 
+                label: '受控输入框', 
+                value: inputValue,
+                onChange: (e) => setInputValue(e.target.value),
+                helperText: `当前输入: ${inputValue}`,
+                placeholder: '请输入内容',
+                style: { width: '300px' }
+              })
+            ])
+          ]),
+          
+          // 模态框示例
+          React.createElement('div', { className: 'component-section', key: 'modals' }, [
+            React.createElement('h2', { key: 'title' }, '模态框组件'),
+            React.createElement('div', { className: 'demo-row', key: 'basic' }, [
+              React.createElement(Button, { 
+                key: 'open-modal', 
+                variant: 'contained',
+                onClick: () => setModalOpen(true)
+              }, '打开模态框')
+            ]),
+            React.createElement(Modal, {
+              key: 'modal',
+              open: modalOpen,
+              onClose: () => setModalOpen(false),
+              title: '模态框标题',
+              footer: React.createElement('div', null, [
+                React.createElement(Button, { 
+                  key: 'cancel', 
+                  variant: 'text',
+                  onClick: () => setModalOpen(false)
+                }, '取消'),
+                React.createElement(Button, { 
+                  key: 'confirm', 
+                  variant: 'contained',
+                  onClick: () => setModalOpen(false)
+                }, '确认')
+              ])
+            }, '这是一个模态框示例，可以包含任何内容。点击遮罩层或关闭按钮可以关闭模态框。')
+          ]),
+          
+          // 提示框示例
+          React.createElement('div', { className: 'component-section', key: 'tooltips' }, [
+            React.createElement('h2', { key: 'title' }, '提示框组件'),
+            React.createElement('div', { className: 'demo-row', key: 'placements' }, [
+              React.createElement(Tooltip, { 
+                key: 'top', 
+                title: '顶部提示',
+                placement: 'top'
+              }, React.createElement(Button, { variant: 'outlined' }, '顶部')),
+              React.createElement(Tooltip, { 
+                key: 'right', 
+                title: '右侧提示',
+                placement: 'right'
+              }, React.createElement(Button, { variant: 'outlined' }, '右侧')),
+              React.createElement(Tooltip, { 
+                key: 'bottom', 
+                title: '底部提示',
+                placement: 'bottom'
+              }, React.createElement(Button, { variant: 'outlined' }, '底部')),
+              React.createElement(Tooltip, { 
+                key: 'left', 
+                title: '左侧提示',
+                placement: 'left'
+              }, React.createElement(Button, { variant: 'outlined' }, '左侧'))
+            ])
+          ])
+        ])
+      );
+    };
+    
+    // 渲染应用
+    ReactDOM.render(
+      React.createElement(App),
+      document.getElementById('root')
+    );
+  </script>
+</body>
+</html>

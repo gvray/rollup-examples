@@ -1,0 +1,151 @@
+/* 主样式文件 */
+
+:root {
+  --primary-color: #4a6da7;
+  --secondary-color: #5e81ac;
+  --accent-color: #88c0d0;
+  --text-color: #2e3440;
+  --background-color: #eceff4;
+  --card-background: #ffffff;
+  --border-color: #d8dee9;
+  --success-color: #a3be8c;
+  --error-color: #bf616a;
+  --warning-color: #ebcb8b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  padding: 20px;
+}
+
+#app {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h2 {
+  color: var(--secondary-color);
+  margin: 25px 0 15px;
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+.logo {
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+}
+
+.demo-section {
+  margin: 30px 0;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.time-display {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: var(--card-background);
+  border-radius: 4px;
+  border-left: 4px solid var(--accent-color);
+}
+
+.id-display {
+  margin: 15px 0;
+}
+
+.id-display p {
+  margin-bottom: 8px;
+}
+
+.id {
+  font-family: monospace;
+  background-color: var(--card-background);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--border-color);
+  color: var(--secondary-color);
+}
+
+.action-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.env-info {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: var(--background-color);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.env-info p {
+  margin-bottom: 5px;
+}
+
+.plugins-list ul {
+  list-style-type: none;
+  margin-left: 10px;
+}
+
+.plugins-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.plugins-list li:last-child {
+  border-bottom: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+  #app {
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .demo-section,
+  .env-info {
+    padding: 15px;
+  }
+}

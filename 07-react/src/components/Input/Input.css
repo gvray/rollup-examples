@@ -1,0 +1,171 @@
+/* 输入框容器 */
+.ui-input-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 8px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+/* 全宽样式 */
+.ui-input-fullwidth {
+  width: 100%;
+}
+
+/* 标签样式 */
+.ui-input-label {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.66;
+  letter-spacing: 0.03333em;
+  margin-bottom: 3px;
+}
+
+.ui-input-required {
+  color: #f44336;
+  margin-left: 2px;
+}
+
+/* 输入框包装器 */
+.ui-input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* 基础输入框样式 */
+.ui-input {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.87);
+  box-sizing: border-box;
+  cursor: text;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  transition: border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+              background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+              box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+/* 输入框变体 */
+.ui-input-outlined .ui-input {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  padding: 8px 12px;
+  background-color: transparent;
+}
+
+.ui-input-filled .ui-input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  border-radius: 4px 4px 0 0;
+  padding: 8px 12px;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.ui-input-standard .ui-input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  border-radius: 0;
+  padding: 4px 0 5px;
+  background-color: transparent;
+}
+
+/* 尺寸变体 */
+.ui-input-small .ui-input {
+  font-size: 0.8125rem;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.ui-input-large .ui-input {
+  font-size: 1.125rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* 聚焦状态 */
+.ui-input-outlined.ui-input-focused .ui-input {
+  border-color: #3f51b5;
+  border-width: 2px;
+  outline: none;
+}
+
+.ui-input-filled.ui-input-focused .ui-input,
+.ui-input-standard.ui-input-focused .ui-input {
+  border-bottom-color: #3f51b5;
+  border-bottom-width: 2px;
+  outline: none;
+}
+
+.ui-input-focused .ui-input-label {
+  color: #3f51b5;
+}
+
+/* 错误状态 */
+.ui-input-error .ui-input {
+  border-color: #f44336 !important;
+}
+
+.ui-input-error .ui-input-label,
+.ui-input-error .ui-input-helper-text {
+  color: #f44336 !important;
+}
+
+/* 禁用状态 */
+.ui-input-disabled .ui-input {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.26);
+  color: rgba(0, 0, 0, 0.38);
+  cursor: not-allowed;
+}
+
+.ui-input-disabled .ui-input-label {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+/* 前缀和后缀 */
+.ui-input-prefix {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.ui-input-suffix {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+/* 帮助文本 */
+.ui-input-helper-text {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.75rem;
+  margin-top: 3px;
+  min-height: 1.2em;
+  text-align: left;
+  font-weight: 400;
+  line-height: 1.66;
+  letter-spacing: 0.03333em;
+}
+
+/* 移除默认样式 */
+.ui-input:focus {
+  outline: none;
+}
+
+.ui-input::-webkit-outer-spin-button,
+.ui-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ui-input[type="number"] {
+  -moz-appearance: textfield;
+}

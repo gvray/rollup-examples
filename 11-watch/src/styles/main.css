@@ -1,0 +1,88 @@
+/* 主样式文件 */
+
+:root {
+  --primary-color: #4CAF50;
+  --secondary-color: #2196F3;
+  --warning-color: #ff9800;
+  --text-color: #333;
+  --background-color: #fff;
+  --card-background: #fff;
+  --border-color: #ddd;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease;
+}
+
+.card {
+  background-color: var(--card-background);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+/* 按钮样式 */
+.btn {
+  transition: all 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.container > * {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* 计数器样式 */
+#counter {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* 时钟样式 */
+#current-time, #formatted-time {
+  font-family: monospace;
+  font-size: 1.1em;
+  color: var(--secondary-color);
+}
+
+/* 日志条目样式 */
+.log-entry {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.log-entry:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+  
+  .card {
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  h2 {
+    font-size: 1.4em;
+  }
+}

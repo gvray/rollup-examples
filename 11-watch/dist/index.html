@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollup 监听模式示例</title>
+  <link rel="stylesheet" href="bundle.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .info {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      text-decoration: none;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .btn-secondary {
+      background-color: #2196F3;
+    }
+    .btn-secondary:hover {
+      background-color: #0b7dda;
+    }
+    .btn-warning {
+      background-color: #ff9800;
+    }
+    .btn-warning:hover {
+      background-color: #e68a00;
+    }
+    .code-block {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 4px;
+      font-family: monospace;
+      overflow-x: auto;
+    }
+    .log-container {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 4px;
+      font-family: monospace;
+      height: 200px;
+      overflow-y: auto;
+      margin-top: 20px;
+    }
+    .log-entry {
+      margin-bottom: 5px;
+      padding: 5px;
+      border-bottom: 1px solid #eee;
+    }
+    .timestamp {
+      color: #666;
+      font-size: 0.8em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rollup 监听模式示例</h1>
+  
+  <div class="info">
+    <p>这个示例展示了 Rollup 的监听模式功能。修改源文件后，Rollup 会自动重新构建项目。</p>
+    <p>当前运行模式: <span id="mode-display">基本监听</span></p>
+    <div>
+      <a href="http://localhost:10011" class="btn">基本监听模式</a>
+      <a href="http://localhost:10012" class="btn btn-secondary">LiveReload 模式</a>
+      <a href="http://localhost:10013" class="btn btn-warning">HMR 模式</a>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="card">
+      <h2>实时时钟</h2>
+      <p>当前时间: <span id="current-time">加载中...</span></p>
+      <p>格式化时间: <span id="formatted-time">加载中...</span></p>
+      <button id="update-btn" class="btn">手动更新</button>
+    </div>
+    
+    <div class="card">
+      <h2>计数器</h2>
+      <p>当前计数: <span id="counter">0</span></p>
+      <button id="increment-btn" class="btn">增加</button>
+      <button id="decrement-btn" class="btn btn-secondary">减少</button>
+      <button id="reset-btn" class="btn btn-warning">重置</button>
+    </div>
+    
+    <div class="card">
+      <h2>监听模式说明</h2>
+      <p>Rollup 提供了几种不同的监听模式:</p>
+      <ul>
+        <li><strong>基本监听</strong>: 使用 <code>rollup -c -w</code> 命令启动，修改文件后自动重新构建，但需要手动刷新浏览器。</li>
+        <li><strong>LiveReload</strong>: 使用 <code>rollup-plugin-livereload</code> 插件，修改文件后自动重新构建并刷新浏览器。</li>
+        <li><strong>HMR (热模块替换)</strong>: 修改文件后只替换变更的模块，保持应用状态。</li>
+      </ul>
+      <p>尝试修改 <code>src/main.js</code> 或 <code>src/styles/main.css</code> 文件，观察不同模式下的行为差异。</p>
+    </div>
+    
+    <div class="card">
+      <h2>日志</h2>
+      <div id="log-container" class="log-container"></div>
+    </div>
+  </div>
+
+  <script src="bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "Rollup Assets Example",
+  "version": "1.0.0",
+  "description": "An example showing how to handle various asset types with Rollup",
+  "features": [
+    "Image processing",
+    "SVG handling",
+    "Font loading",
+    "Static assets"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

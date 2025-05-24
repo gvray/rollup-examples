@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollup 插件示例</title>
+  <link rel="stylesheet" href="dist/main.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 应用内容将由JavaScript动态生成 -->
+  </div>
+  
+  <!-- 插件信息 -->
+  <div class="plugin-info" style="max-width: 800px; margin: 20px auto; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+    <h2 style="color: #4a6da7;">插件说明</h2>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+      <thead>
+        <tr style="background-color: #e9ecef;">
+          <th style="padding: 10px; text-align: left; border: 1px solid #dee2e6;">插件名称</th>
+          <th style="padding: 10px; text-align: left; border: 1px solid #dee2e6;">功能描述</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">@rollup/plugin-node-resolve</td>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">定位并解析第三方模块，使Rollup能够处理node_modules中的依赖</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">@rollup/plugin-commonjs</td>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">将CommonJS模块转换为ES模块，使Rollup能够处理CommonJS格式的依赖</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">@rollup/plugin-babel</td>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">使用Babel转换代码，支持最新的JavaScript特性并兼容旧浏览器</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">@rollup/plugin-terser</td>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">压缩和混淆JavaScript代码，减小输出文件大小</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">@rollup/plugin-json</td>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">允许导入JSON文件作为ES模块</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">@rollup/plugin-replace</td>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">在打包过程中替换源代码中的变量，常用于设置环境变量</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">@rollup/plugin-url</td>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">处理图片、字体等资源文件，可以将小文件内联为base64</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">rollup-plugin-postcss</td>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">处理CSS文件，支持CSS预处理器、自动前缀和压缩</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">rollup-plugin-serve</td>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">提供开发服务器，方便本地开发和预览</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">rollup-plugin-livereload</td>
+          <td style="padding: 10px; border: 1px solid #dee2e6;">监视文件变化并自动刷新浏览器，提升开发体验</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <script src="dist/bundle.js"></script>
+</body>
+</html>

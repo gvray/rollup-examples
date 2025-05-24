@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollup 库打包示例</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .section {
+      margin-bottom: 30px;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+    }
+    .result {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #e9f7fe;
+      border-radius: 5px;
+    }
+    pre {
+      background-color: #f0f0f0;
+      padding: 15px;
+      border-radius: 5px;
+      overflow: auto;
+    }
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: #eee;
+      margin-right: 5px;
+      border-radius: 5px 5px 0 0;
+    }
+    .tab.active {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-bottom: none;
+    }
+    .tab-content {
+      display: none;
+      border: 1px solid #ddd;
+      padding: 20px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rollup 库打包示例 - Math Utils</h1>
+  
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('basic')">基础运算</div>
+    <div class="tab" onclick="switchTab('advanced')">高级运算</div>
+    <div class="tab" onclick="switchTab('statistics')">统计函数</div>
+    <div class="tab" onclick="switchTab('info')">库信息</div>
+  </div>
+  
+  <div id="basic" class="tab-content active">
+    <h2>基础数学运算</h2>
+    
+    <div class="section">
+      <h3>加法</h3>
+      <p>计算: 5 + 3 = <span id="add-result"></span></p>
+      <pre>mathUtils.add(5, 3);</pre>
+    </div>
+    
+    <div class="section">
+      <h3>减法</h3>
+      <p>计算: 10 - 4 = <span id="subtract-result"></span></p>
+      <pre>mathUtils.subtract(10, 4);</pre>
+    </div>
+    
+    <div class="section">
+      <h3>乘法</h3>
+      <p>计算: 6 * 7 = <span id="multiply-result"></span></p>
+      <pre>mathUtils.multiply(6, 7);</pre>
+    </div>
+    
+    <div class="section">
+      <h3>除法</h3>
+      <p>计算: 20 / 4 = <span id="divide-result"></span></p>
+      <pre>mathUtils.divide(20, 4);</pre>
+    </div>
+  </div>
+  
+  <div id="advanced" class="tab-content">
+    <h2>高级数学运算</h2>
+    
+    <div class="section">
+      <h3>幂运算</h3>
+      <p>计算: 2^8 = <span id="power-result"></span></p>
+      <pre>mathUtils.power(2, 8);</pre>
+    </div>
+    
+    <div class="section">
+      <h3>平方根</h3>
+      <p>计算: √16 = <span id="sqrt-result"></span></p>
+      <pre>mathUtils.sqrt(16);</pre>
+    </div>
+    
+    <div class="section">
+      <h3>阶乘</h3>
+      <p>计算: 5! = <span id="factorial-result"></span></p>
+      <pre>mathUtils.factorial(5);</pre>
+    </div>
+    
+    <div class="section">
+      <h3>三角函数</h3>
+      <p>计算: sin(π/2) = <span id="sin-result"></span></p>
+      <pre>mathUtils.sin(Math.PI / 2);</pre>
+    </div>
+  </div>
+  
+  <div id="statistics" class="tab-content">
+    <h2>统计函数</h2>
+    
+    <div class="section">
+      <h3>数据集</h3>
+      <p>示例数据: [4, 7, 2, 9, 3, 5, 7, 8, 6, 7]</p>
+      <pre>const data = [4, 7, 2, 9, 3, 5, 7, 8, 6, 7];</pre>
+    </div>
+    
+    <div class="section">
+      <h3>平均值</h3>
+      <p>计算结果: <span id="mean-result"></span></p>
+      <pre>mathUtils.mean(data);</pre>
+    </div>
+    
+    <div class="section">
+      <h3>中位数</h3>
+      <p>计算结果: <span id="median-result"></span></p>
+      <pre>mathUtils.median(data);</pre>
+    </div>
+    
+    <div class="section">
+      <h3>众数</h3>
+      <p>计算结果: <span id="mode-result"></span></p>
+      <pre>mathUtils.mode(data);</pre>
+    </div>
+    
+    <div class="section">
+      <h3>标准差</h3>
+      <p>计算结果: <span id="std-result"></span></p>
+      <pre>mathUtils.standardDeviation(data);</pre>
+    </div>
+  </div>
+  
+  <div id="info" class="tab-content">
+    <h2>库信息</h2>
+    
+    <div class="section">
+      <h3>版本</h3>
+      <p>当前版本: <span id="version"></span></p>
+      <pre>mathUtils.VERSION;</pre>
+    </div>
+    
+    <div class="section">
+      <h3>可用函数</h3>
+      <table id="functions-table">
+        <tr>
+          <th>分类</th>
+          <th>函数名</th>
+          <th>描述</th>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="section">
+      <h3>使用方式</h3>
+      <h4>1. 通过脚本标签 (UMD)</h4>
+      <pre>&lt;script src="dist/index.umd.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  // 全局变量 mathUtils
+  const result = mathUtils.add(1, 2);
+&lt;/script&gt;</pre>
+      
+      <h4>2. 通过 ES 模块</h4>
+      <pre>import mathUtils from './dist/index.esm.js';
+// 或者导入特定函数
+import { add, subtract } from './dist/index.esm.js';
+
+const result = add(1, 2);</pre>
+      
+      <h4>3. 通过 CommonJS</h4>
+      <pre>const mathUtils = require('./dist/index.cjs.js');
+
+const result = mathUtils.add(1, 2);</pre>
+    </div>
+  </div>
+  
+  <!-- 加载库 (UMD版本) -->
+  <script src="dist/index.umd.debug.js"></script>
+  
+  <script>
+    // 基础运算
+    document.getElementById('add-result').textContent = mathUtils.add(5, 3);
+    document.getElementById('subtract-result').textContent = mathUtils.subtract(10, 4);
+    document.getElementById('multiply-result').textContent = mathUtils.multiply(6, 7);
+    document.getElementById('divide-result').textContent = mathUtils.divide(20, 4);
+    
+    // 高级运算
+    document.getElementById('power-result').textContent = mathUtils.power(2, 8);
+    document.getElementById('sqrt-result').textContent = mathUtils.sqrt(16);
+    document.getElementById('factorial-result').textContent = mathUtils.factorial(5);
+    document.getElementById('sin-result').textContent = mathUtils.sin(Math.PI / 2);
+    
+    // 统计函数
+    const data = [4, 7, 2, 9, 3, 5, 7, 8, 6, 7];
+    document.getElementById('mean-result').textContent = mathUtils.mean(data);
+    document.getElementById('median-result').textContent = mathUtils.median(data);
+    document.getElementById('mode-result').textContent = mathUtils.mode(data);
+    document.getElementById('std-result').textContent = 
+      mathUtils.standardDeviation(data).toFixed(4);
+    
+    // 库信息
+    document.getElementById('version').textContent = mathUtils.VERSION;
+    
+    // 填充函数表格
+    const functionsTable = document.getElementById('functions-table');
+    
+    // 基础函数
+    addFunctionRow('基础', 'add(a, b)', '两数相加');
+    addFunctionRow('基础', 'subtract(a, b)', '两数相减');
+    addFunctionRow('基础', 'multiply(a, b)', '两数相乘');
+    addFunctionRow('基础', 'divide(a, b)', '两数相除');
+    addFunctionRow('基础', 'mod(a, b)', '取余运算');
+    addFunctionRow('基础', 'abs(x)', '绝对值');
+    
+    // 高级函数
+    addFunctionRow('高级', 'power(base, exponent)', '幂运算');
+    addFunctionRow('高级', 'sqrt(x)', '平方根');
+    addFunctionRow('高级', 'factorial(n)', '阶乘');
+    addFunctionRow('高级', 'log(x, base)', '对数');
+    addFunctionRow('高级', 'sin(angle)', '正弦');
+    addFunctionRow('高级', 'cos(angle)', '余弦');
+    addFunctionRow('高级', 'tan(angle)', '正切');
+    
+    // 统计函数
+    addFunctionRow('统计', 'mean(numbers)', '平均值');
+    addFunctionRow('统计', 'median(numbers)', '中位数');
+    addFunctionRow('统计', 'mode(numbers)', '众数');
+    addFunctionRow('统计', 'variance(numbers)', '方差');
+    addFunctionRow('统计', 'standardDeviation(numbers)', '标准差');
+    addFunctionRow('统计', 'range(numbers)', '范围');
+    
+    function addFunctionRow(category, name, description) {
+      const row = document.createElement('tr');
+      
+      const categoryCell = document.createElement('td');
+      categoryCell.textContent = category;
+      row.appendChild(categoryCell);
+      
+      const nameCell = document.createElement('td');
+      nameCell.textContent = name;
+      row.appendChild(nameCell);
+      
+      const descCell = document.createElement('td');
+      descCell.textContent = description;
+      row.appendChild(descCell);
+      
+      functionsTable.appendChild(row);
+    }
+    
+    // 切换标签页
+    function switchTab(tabId) {
+      // 隐藏所有标签内容
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // 取消所有标签的激活状态
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      // 激活选中的标签和内容
+      document.getElementById(tabId).classList.add('active');
+      
+      // 找到对应的标签按钮并激活
+      const tabIndex = ['basic', 'advanced', 'statistics', 'info'].indexOf(tabId);
+      document.querySelector(`.tab:nth-child(${tabIndex + 1})`).classList.add('active');
+    }
+  </script>
+</body>
+</html>

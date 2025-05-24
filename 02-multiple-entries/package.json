@@ -1,0 +1,18 @@
+{
+  "name": "02-multiple-entries",
+  "version": "1.0.0",
+  "description": "多入口打包示例，演示如何配置多入口打包，生成多个输出文件",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "keywords": [
+    "rollup",
+    "multiple-entries"
+  ],
+  "author": "Gavin Ray",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^3.29.4"
+  }
+}

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollup TypeScript 示例</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .todo-app {
+      margin-top: 20px;
+    }
+    .todo-input {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .todo-input input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+    }
+    .todo-input button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    .todo-filters {
+      display: flex;
+      margin-bottom: 15px;
+    }
+    .filter-btn {
+      margin-right: 10px;
+      padding: 5px 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #f5f5f5;
+      cursor: pointer;
+    }
+    .filter-btn.active {
+      background-color: #4CAF50;
+      color: white;
+      border-color: #4CAF50;
+    }
+    .todo-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    .todo-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .todo-item:last-child {
+      border-bottom: none;
+    }
+    .todo-item input[type="checkbox"] {
+      margin-right: 10px;
+    }
+    .todo-item .text {
+      flex: 1;
+    }
+    .todo-item.completed .text {
+      text-decoration: line-through;
+      color: #888;
+    }
+    .todo-item .date {
+      font-size: 12px;
+      color: #888;
+      margin-right: 10px;
+    }
+    .todo-item .delete {
+      color: #f44336;
+      cursor: pointer;
+    }
+    .todo-stats {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+    }
+    .clear-completed {
+      color: #f44336;
+      cursor: pointer;
+    }
+    .code-example {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rollup TypeScript 示例 - 待办事项应用</h1>
+  
+  <p>这个示例展示了如何使用Rollup打包TypeScript项目，并创建一个简单的待办事项应用。</p>
+  
+  <div class="todo-app">
+    <div class="todo-input">
+      <input type="text" id="new-todo" placeholder="添加新的待办事项..." />
+      <button id="add-todo">添加</button>
+    </div>
+    
+    <div class="todo-filters">
+      <div class="filter-btn active" data-filter="all">全部</div>
+      <div class="filter-btn" data-filter="active">未完成</div>
+      <div class="filter-btn" data-filter="completed">已完成</div>
+    </div>
+    
+    <ul class="todo-list" id="todo-list"></ul>
+    
+    <div class="todo-stats">
+      <div class="stats" id="todo-stats">总计: 0, 未完成: 0, 已完成: 0</div>
+      <div class="clear-completed" id="clear-completed">清除已完成</div>
+    </div>
+  </div>
+  
+  <h2>TypeScript 代码示例</h2>
+  
+  <div class="code-example">
+    <pre><code>// 导入TodoApp类
+import TodoAppImpl from './dist/index.esm.js';
+
+// 创建应用实例
+const todoApp = new TodoAppImpl();
+
+// 添加待办事项
+const todo = todoApp.add('学习TypeScript');
+console.log(todo);
+
+// 获取所有待办事项
+const todos = todoApp.getFilteredTodos();
+console.log(todos);
+
+// 切换完成状态
+todoApp.toggle(todo.id);
+
+// 获取统计信息
+const stats = todoApp.getStats();
+console.log(stats);</code></pre>
+  </div>
+  
+  <!-- 加载打包后的UMD模块 -->
+  <script src="dist/index.umd.js"></script>
+  
+  <script>
+    // 创建待办事项应用实例
+    const todoApp = new todoApp.default();
+    
+    // DOM元素
+    const newTodoInput = document.getElementById('new-todo');
+    const addTodoButton = document.getElementById('add-todo');
+    const todoList = document.getElementById('todo-list');
+    const todoStats = document.getElementById('todo-stats');
+    const clearCompleted = document.getElementById('clear-completed');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    // 渲染待办事项列表
+    function renderTodos() {
+      // 清空列表
+      todoList.innerHTML = '';
+      
+      // 获取过滤后的待办事项
+      const filteredTodos = todoApp.getFilteredTodos();
+      
+      // 渲染每个待办事项
+      filteredTodos.forEach(todo => {
+        const li = document.createElement('li');
+        li.className = `todo-item ${todo.completed ? 'completed' : ''}`;
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = todo.completed;
+        checkbox.addEventListener('change', () => {
+          todoApp.toggle(todo.id);
+          renderTodos();
+          updateStats();
+        });
+        
+        const text = document.createElement('span');
+        text.className = 'text';
+        text.textContent = todo.text;
+        
+        const date = document.createElement('span');
+        date.className = 'date';
+        date.textContent = todoApp.formatCreatedAt(todo);
+        
+        const deleteBtn = document.createElement('span');
+        deleteBtn.className = 'delete';
+        deleteBtn.textContent = '删除';
+        deleteBtn.addEventListener('click', () => {
+          todoApp.remove(todo.id);
+          renderTodos();
+          updateStats();
+        });
+        
+        li.appendChild(checkbox);
+        li.appendChild(text);
+        li.appendChild(date);
+        li.appendChild(deleteBtn);
+        
+        todoList.appendChild(li);
+      });
+    }
+    
+    // 更新统计信息
+    function updateStats() {
+      const stats = todoApp.getStats();
+      todoStats.textContent = `总计: ${stats.total}, 未完成: ${stats.active}, 已完成: ${stats.completed}`;
+    }
+    
+    // 添加待办事项
+    addTodoButton.addEventListener('click', () => {
+      const text = newTodoInput.value.trim();
+      if (text) {
+        todoApp.add(text);
+        newTodoInput.value = '';
+        renderTodos();
+        updateStats();
+      }
+    });
+    
+    // 回车添加待办事项
+    newTodoInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        addTodoButton.click();
+      }
+    });
+    
+    // 清除已完成的待办事项
+    clearCompleted.addEventListener('click', () => {
+      todoApp.clearCompleted();
+      renderTodos();
+      updateStats();
+    });
+    
+    // 切换过滤器
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // 移除所有按钮的active类
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // 添加当前按钮的active类
+        button.classList.add('active');
+        
+        // 设置过滤器
+        todoApp.setFilter(button.dataset.filter);
+        
+        // 重新渲染列表
+        renderTodos();
+      });
+    });
+    
+    // 初始化
+    renderTodos();
+    updateStats();
+    
+    // 添加一些示例待办事项
+    if (todoApp.todos.length === 0) {
+      todoApp.add('学习TypeScript');
+      todoApp.add('学习Rollup打包');
+      todoApp.add('完成项目');
+      renderTodos();
+      updateStats();
+    }
+  </script>
+</body>
+</html>

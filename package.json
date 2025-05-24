@@ -1,0 +1,15 @@
+{
+  "name": "rollup-examples",
+  "version": "1.0.0",
+  "description": "收集研究rollup各种场景案例",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rollup",
+    "examples",
+    "bundler"
+  ],
+  "author": "Gavin Ray",
+  "license": "MIT"
+}

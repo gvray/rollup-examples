@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于 - Rollup 代码分割示例</title>
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --accent-color: #e74c3c;
+      --text-color: #333;
+      --light-bg: #f5f5f5;
+      --border-color: #ddd;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--light-bg);
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      margin-bottom: 10px;
+    }
+    
+    nav {
+      background-color: #f8f9fa;
+      padding: 10px 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav li {
+      margin-right: 20px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+    
+    main {
+      padding: 20px;
+    }
+    
+    .content-section {
+      margin-bottom: 30px;
+    }
+    
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+    
+    h3 {
+      color: var(--primary-color);
+      margin: 20px 0 10px;
+    }
+    
+    p {
+      margin-bottom: 15px;
+    }
+    
+    .button {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      text-decoration: none;
+      margin-top: 15px;
+    }
+    
+    .button:hover {
+      background-color: #2980b9;
+    }
+    
+    .about-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .about-section {
+      background-color: var(--light-bg);
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--primary-color);
+    }
+    
+    .about-section.extra-info {
+      border-left-color: var(--secondary-color);
+    }
+    
+    .about-section ul, .about-section ol {
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .about-section li {
+      margin-bottom: 5px;
+    }
+    
+    code {
+      font-family: monospace;
+      background-color: #f1f1f1;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    
+    pre {
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    
+    .timestamp {
+      font-size: 14px;
+      color: #666;
+      margin-top: 20px;
+      font-style: italic;
+    }
+    
+    .version-info {
+      display: inline-block;
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    
+    .navigation {
+      margin-top: 30px;
+      text-align: center;
+    }
+    
+    footer {
+      background-color: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>关于 - Rollup 代码分割示例</h1>
+      <p>了解Rollup代码分割的工作原理和优势</p>
+    </header>
+    
+    <nav>
+      <ul>
+        <li><a href="index.html">主页</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+    </nav>
+    
+    <main>
+      <section class="content-section">
+        <h2>关于代码分割</h2>
+        
+        <div id="about-content">
+          <!-- 动态内容将在这里显示 -->
+        </div>
+      </section>
+    </main>
+    
+    <footer>
+      <p>Rollup 代码分割示例 &copy; 2023</p>
+    </footer>
+  </div>
+  
+  <!-- 加载关于页入口脚本 -->
+  <script type="module" src="dist/about.js"></script>
+</body>
+</html>

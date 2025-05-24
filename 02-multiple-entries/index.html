@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollup 多入口打包示例</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .module {
+      margin-bottom: 30px;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .module-a {
+      background-color: #f0f8ff;
+    }
+    .module-b {
+      background-color: #f0fff0;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow: auto;
+    }
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: #eee;
+      margin-right: 5px;
+      border-radius: 5px 5px 0 0;
+    }
+    .tab.active {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-bottom: none;
+    }
+    .tab-content {
+      display: none;
+      border: 1px solid #ddd;
+      padding: 20px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rollup 多入口打包示例</h1>
+  
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('separate')">独立打包</div>
+    <div class="tab" onclick="switchTab('combined')">合并打包</div>
+  </div>
+  
+  <div id="separate" class="tab-content active">
+    <p>这个示例展示了如何使用Rollup进行多入口打包，生成多个独立的输出文件。</p>
+    
+    <div class="module module-a">
+      <h2>模块 A</h2>
+      <div id="output-a"></div>
+    </div>
+    
+    <div class="module module-b">
+      <h2>模块 B</h2>
+      <div id="output-b"></div>
+    </div>
+  </div>
+  
+  <div id="combined" class="tab-content">
+    <p>这个示例展示了如何将多个入口文件合并打包，共享公共模块。</p>
+    <p>查看控制台以了解更多信息。</p>
+    <p>注意：合并模式下使用了ESM格式，需要通过import语句导入。</p>
+    
+    <pre>// 示例代码
+import { initModuleA } from './dist/combined/main-a.js';
+import { initModuleB } from './dist/combined/main-b.js';
+
+const resultA = initModuleA();
+const resultB = initModuleB();
+
+console.log(resultA, resultB);</pre>
+  </div>
+  
+  <!-- 加载独立打包的模块 -->
+  <script src="dist/bundle-a.js"></script>
+  <script src="dist/bundle-b.js"></script>
+  
+  <script>
+    // 显示模块A的结果
+    document.getElementById('output-a').textContent = 
+      JSON.stringify(moduleA.initModuleA(), null, 2);
+    
+    // 显示模块B的结果
+    document.getElementById('output-b').textContent = 
+      JSON.stringify(moduleB.initModuleB(), null, 2);
+    
+    // 切换标签页
+    function switchTab(tabId) {
+      // 隐藏所有标签内容
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // 取消所有标签的激活状态
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      // 激活选中的标签和内容
+      document.getElementById(tabId).classList.add('active');
+      document.querySelector(`.tab:nth-child(${tabId === 'separate' ? 1 : 2})`).classList.add('active');
+    }
+  </script>
+</body>
+</html>
