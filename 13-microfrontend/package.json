@@ -1,0 +1,48 @@
+{
+  "name": "13-microfrontend",
+  "version": "1.0.0",
+  "description": "Rollup微前端示例 - 展示如何使用Rollup构建微前端应用",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build:host": "rollup -c rollup.host.config.js",
+    "build:app1": "rollup -c rollup.app1.config.js",
+    "build:app2": "rollup -c rollup.app2.config.js",
+    "build": "npm run clean && npm run build:host && npm run build:app1 && npm run build:app2",
+    "dev:host": "rollup -c rollup.host.config.js -w",
+    "dev:app1": "rollup -c rollup.app1.config.js -w",
+    "dev:app2": "rollup -c rollup.app2.config.js -w",
+    "dev": "concurrently \"npm run dev:host\" \"npm run dev:app1\" \"npm run dev:app2\"",
+    "serve": "serve dist -p 5000"
+  },
+  "keywords": [
+    "rollup",
+    "microfrontend",
+    "微前端",
+    "systemjs",
+    "module-federation"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-html": "^0.2.4",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-replace": "^4.0.0",
+    "concurrently": "^7.3.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.77.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-serve": "^2.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "serve": "^14.0.1"
+  },
+  "dependencies": {
+    "single-spa": "^5.9.4",
+    "systemjs": "^6.12.1"
+  }
+}

@@ -1,0 +1,214 @@
+/* 应用2样式 */
+.app2-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.app2-title {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
+}
+
+.app2-description {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* 控制面板 */
+.control-panel {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.refresh-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.refresh-btn:hover {
+  background-color: #27ae60;
+}
+
+/* 数据区域 */
+.data-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* 图表样式 */
+.chart-container {
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chart-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.chart-canvas {
+  height: 250px;
+  position: relative;
+}
+
+.chart-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 200px;
+  border-bottom: 2px solid #ddd;
+  border-left: 2px solid #ddd;
+  padding-bottom: 30px;
+}
+
+.chart-column {
+  display: flex;
+  width: 60px;
+  justify-content: center;
+  position: relative;
+}
+
+.chart-bar {
+  width: 20px;
+  transition: height 0.5s ease;
+}
+
+.sales-bar {
+  background-color: var(--secondary-color);
+  margin-right: 5px;
+}
+
+.target-bar {
+  background-color: var(--primary-color);
+}
+
+.month-label {
+  position: absolute;
+  bottom: -25px;
+  text-align: center;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.sales-color {
+  background-color: var(--secondary-color);
+}
+
+.target-color {
+  background-color: var(--primary-color);
+}
+
+/* 表格样式 */
+.table-container {
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.table-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+.data-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.rate-success {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.rate-warning {
+  color: #f39c12;
+  font-weight: bold;
+}
+
+.rate-danger {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+  .data-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .app2-container {
+    padding: 1rem;
+  }
+  
+  .chart-content {
+    height: 150px;
+  }
+  
+  .chart-column {
+    width: 40px;
+  }
+  
+  .chart-bar {
+    width: 15px;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
